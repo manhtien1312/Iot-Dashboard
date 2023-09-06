@@ -3,16 +3,22 @@
   height: 100%;
   border-radius: 5px;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
-  .title{
-    padding: 10px 0 20px 0;
-    color: #94a3b8;
-    font-size: larger;
-  }
+  .left-element{
+    padding-left: 15%;
 
-  h1{
-    font-size: 80px;
-    font-weight: 700;
+    .title{
+      padding: 10px 0 0 0;
+      color: #94a3b8;
+      font-size: larger;
+    }
+    
+    img{
+      width: 60;
+    }
   }
 
 }
