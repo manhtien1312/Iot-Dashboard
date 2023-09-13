@@ -15,6 +15,19 @@ const SensorWrapper = () => {
   const [light, setLight] = useState(0);
   const [lightColor, setLightColor] = useState({});
 
+  // useEffect(() => {
+    
+  //   const interval = setInterval(() => {
+  //     setTemp(Math.floor(Math.random() * 101));
+  //     setHumid(Math.floor(Math.random() * 101));
+  //     setLight(Math.floor(Math.random() * 101));
+  //   }, 2000)
+    
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+
+  // }, [])
   useEffect(() => {
     if(temp >= 0 && temp <= 5) setTempColor({bot: "#918450", top: "#ffd29d"});
     else if(temp > 5 && temp <= 10) setTempColor({bot: "#ffd29d", top: "#ffb563"});
@@ -39,7 +52,7 @@ const SensorWrapper = () => {
       <div className={cx("row")}>
         <div className={cx("col")}>
           <Sensor 
-            title={"NHIỆT ĐỘ"} 
+            title={"TEMPERATURE"} 
             unit={"°C"} 
             image={require('../images/thermometer.png')} 
             data={temp}
@@ -48,7 +61,7 @@ const SensorWrapper = () => {
         </div>
         <div className={cx("col")}>
           <Sensor 
-            title={"ĐỘ ẨM"} 
+            title={"HUMIDITY"} 
             unit={"%"} 
             image={require('../images/humidity.png')} 
             data={humid}
@@ -57,7 +70,7 @@ const SensorWrapper = () => {
         </div>
         <div className={cx("col")}>
           <Sensor 
-            title={"ÁNH SÁNG"} 
+            title={"LIGHT"} 
             unit={"lux"}
             image={require('../images/light.png')} 
             data={light}

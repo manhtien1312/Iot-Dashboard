@@ -1,20 +1,22 @@
-
 import './App.css';
-import SensorWrapper from './components/SensorWrapper';
-import Chart from './components/Chart';
-import SwitchWrapper from './components/SwitchWrapper';
+import Dashboard from './components/Dashboard';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Profile from './components/Profile';
+import DataSensor from './components/DataSensor';
+import SwitchHistory from './components/SwitchHistory';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <div className='top'><SensorWrapper /></div>
-        <div className='bottom'>
-          <Chart />
-          <SwitchWrapper />
-        </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/sensor-data' element={<DataSensor />} />
+          <Route path='/history' element={<SwitchHistory />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

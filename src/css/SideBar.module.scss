@@ -1,0 +1,27 @@
+.content{
+  width: 20vw;
+  height: 100vh;
+  background-color: #0284c7;
+
+  .menu-wrapper{
+    .menu-item{
+      padding: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: large;
+      font-weight: 600;
+      transition: background-color ease-in-out 200ms;
+
+      &.active {
+        background-color: #0273ae;
+      }
+
+      &:hover {
+        background-color: #0273ae;
+      }
+    }
+  }
+}
