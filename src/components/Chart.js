@@ -36,24 +36,30 @@ const Chart = () => {
 
   useEffect(() => {
 
-    const interval = setInterval(() => {
-      if(label.length > 5) label.shift();
-      if(dataTemp.length > 5) dataTemp.shift();
-      if(dataHumid.length > 5) dataHumid.shift();
-      if(dataLight.length > 5) dataLight.shift();
+    const generateRandomData = () => {
+      let labelX = [...label, moment().format("hh:mm:ss")];
+      let temp = [...dataTemp, Math.floor(Math.random()*100)];
+      let humid = [...dataHumid, Math.floor(Math.random()*100)];
+      let light = [...dataLight, Math.floor(Math.random()*5000)];
 
-      setLabel(prev => [...prev, moment().format("hh:mm:ss")]);
-      setDataTemp(prev => [...prev, Math.random()*101]);
-      setDataHumid(prev => [...prev, Math.random()*101]);
-      setDataLight(prev => [...prev, Math.random()*5001]);
+      if(labelX.length > 10) labelX.shift();
+      if(temp.length > 10) temp.shift();
+      if(humid.length > 10) humid.shift();
+      if(light.length > 10) light.shift();
 
-    }, 2000)
+      setLabel(labelX);
+      setDataTemp(temp);
+      setDataHumid(humid);
+      setDataLight(light);
+    }
 
-    return () => {
+    const interval = setInterval(generateRandomData, 2000);
+      
+      return () => {
       clearInterval(interval);
     };
 
-  }, [])
+  }, [label, dataTemp, dataHumid, dataLight]);
 
   const data = {
     labels: label,
