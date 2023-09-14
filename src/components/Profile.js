@@ -6,7 +6,9 @@ import PopupModal from './PopupModal';
 import classNames from 'classnames/bind';
 import style from '../css/Profile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGithub, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
@@ -19,56 +21,50 @@ const Profile = () => {
 
   return (
     <div>
-      <Header header={"Dashboard"} onClick={toggleModal} />
+      <Header header={"Profile"} onClick={toggleModal} />
       <div className={cx('content')}>
-      <div class="container mt-5">
-    
-        <div class="row d-flex justify-content-center">
-            
-            <div class="col-md-7">
-                
-                <div class="card p-3 py-4">
-                    
-                    <div class="text-center">
-                        <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle" />
-                    </div>
-                    
-                    <div class="text-center mt-3">
-                        <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                        <h5 class="mt-2 mb-0">Alexender Schidmt</h5>
-                        <span>UI/UX Designer</span>
-                        
-                        <div class="px-4 mt-1">
-                            <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        
-                        </div>
-                        
-                        <ul class="social-list">
-                            <li><FontAwesomeIcon icon={faFacebook} /></li>
-                            <li><FontAwesomeIcon icon={faInstagram} /></li>
-                            <li><FontAwesomeIcon icon={faTwitter} /></li>
-                            <li><FontAwesomeIcon icon={faGithub} /></li>
-                        </ul>
-                        
-                        
-                    </div>
-                    
-                  
-                    
-                    
-                </div>
-                
-            </div>
-            
+        <img src={require('../images/avt.jpg')} alt="avatar" 
+            className={cx("rounded-circle")}  
+            width={100}
+        /> 
+        <p className={cx("card-name")}>Nguyễn Mạnh Tiến</p>
+
+        <div className={cx("contact")}>
+          <div>
+            <FontAwesomeIcon icon={faEnvelope} /> 
+            <p>tiennguyenmanh131202@gmail.com</p>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faPhone} />
+            <p>0378057198</p>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faLocationDot} />
+            <p>Hà Nội</p>
+          </div>
         </div>
-        
-    </div>
+
+        <div className={cx("social-media")}>
+          <Link to={"https://www.facebook.com/profile.php?id=100013382346108"}>
+            <div className={"rounded-circle"}><FontAwesomeIcon icon={faFacebook} /></div>
+          </Link>
+          <Link to={"https://www.instagram.com/nmtien_1312/"}>
+            <div className={cx("rounded-circle")}><FontAwesomeIcon icon={faInstagram} /></div>
+          </Link>
+          <Link to={"https://twitter.com/NMT1312"}>
+            <div className={cx("rounded-circle")}><FontAwesomeIcon icon={faTwitter} /></div>
+          </Link>
+          <Link to={"https://github.com/manhtien1312"}>
+            <div className={cx("rounded-circle")}><FontAwesomeIcon icon={faGithub} /></div>
+          </Link>
+        </div>
+
       </div>
 
       {
-          modal &&
-          <PopupModal content={<SideBar />} onClick={toggleModal} />
-        }
+        modal &&
+        <PopupModal content={<SideBar />} onClick={toggleModal} />
+      }
     </div>
   );
 };

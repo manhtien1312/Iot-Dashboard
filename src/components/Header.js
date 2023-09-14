@@ -10,7 +10,7 @@ const cx = classNames.bind(style);
 const Header = ({ header, onClick }) => {
   return (
     <div className={cx('content')}>
-      <button type="button" class="btn rounded-circle"
+      <button type="button" className={"btn rounded-pill"}
         onClick={onClick}
       >
         <FontAwesomeIcon icon={faBars} />
