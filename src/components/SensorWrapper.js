@@ -7,7 +7,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(style);
 
 const SensorWrapper = () => {
-
+  
   const [temp, setTemp] = useState(0);
   const [tempColor, setTempColor] = useState({});
   const [humid, setHumid] = useState(0);
@@ -15,19 +15,19 @@ const SensorWrapper = () => {
   const [light, setLight] = useState(0);
   const [lightColor, setLightColor] = useState({});
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   const interval = setInterval(() => {
-  //     setTemp(Math.floor(Math.random() * 101));
-  //     setHumid(Math.floor(Math.random() * 101));
-  //     setLight(Math.floor(Math.random() * 101));
-  //   }, 2000)
+    const interval = setInterval(() => {
+      setTemp(Math.floor(Math.random() * 101));
+      setHumid(Math.floor(Math.random() * 101));
+      setLight(Math.floor(Math.random() * 5001));
+    }, 2000)
     
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
+    return () => {
+      clearInterval(interval);
+    };
 
-  // }, [])
+  }, [])
   useEffect(() => {
     if(temp >= 0 && temp <= 5) setTempColor({bot: "#918450", top: "#ffd29d"});
     else if(temp > 5 && temp <= 10) setTempColor({bot: "#ffd29d", top: "#ffb563"});

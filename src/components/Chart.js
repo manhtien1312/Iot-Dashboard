@@ -10,6 +10,7 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2';
+import moment from 'moment';
 
 import classNames from 'classnames/bind';
 import style from '../css/Chart.module.scss';
@@ -32,25 +33,27 @@ const Chart = () => {
   const [dataHumid, setDataHumid] = useState([]);
   const [dataLight, setDataLight] = useState([]);
   const [label, setLabel] = useState([]);
-  let count = 0;
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setLabel(prev => [...prev, count++]);
-  //     if(label.length > 10) setLabel(label.shift());
-  //     setDataTemp(prev => [...prev, Math.random()*101]);
-  //     if(dataTemp.length > 10) setDataTemp(dataTemp.shift());
-  //     setDataHumid(prev => [...prev, Math.random()*101]);
-  //     if(dataHumid.length > 10) setDataHumid(dataHumid.shift());
-  //     setDataLight(prev => [...prev, Math.random()*5001]);
-  //     if(dataLight.length > 10) setDataLight(dataLight.shift());
-  //   }, 2000)
+  useEffect(() => {
 
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
+    const interval = setInterval(() => {
+      if(label.length > 5) label.shift();
+      if(dataTemp.length > 5) dataTemp.shift();
+      if(dataHumid.length > 5) dataHumid.shift();
+      if(dataLight.length > 5) dataLight.shift();
 
-  // }, [])
+      setLabel(prev => [...prev, moment().format("hh:mm:ss")]);
+      setDataTemp(prev => [...prev, Math.random()*101]);
+      setDataHumid(prev => [...prev, Math.random()*101]);
+      setDataLight(prev => [...prev, Math.random()*5001]);
+
+    }, 2000)
+
+    return () => {
+      clearInterval(interval);
+    };
+
+  }, [])
 
   const data = {
     labels: label,
